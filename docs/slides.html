@@ -149,14 +149,80 @@ Sean Jeon
 </section>
 <section id="findings" class="slide level2">
 <h2>Findings</h2>
-<ul>
-<li><strong>GDP per Capita Trends</strong></li>
-<li><strong>Inflation and Life Expectancy Relationship</strong></li>
-</ul>
+</section>
+<section id="gdp-per-capita-trends" class="slide level2">
+<h2><strong>📊 GDP per Capita Trends</strong></h2>
+<p>GDP per capita measures the average economic output per person, reflecting <strong>living standards and economic growth</strong>. Developed countries tend to have <strong>higher GDP per capita</strong>, while emerging economies experience <strong>rapid growth</strong>. Economic shocks (e.g., recessions, inflation) can <strong>slow GDP growth</strong>, affecting <strong>income and quality of life</strong>.</p>
+<div id="a86e410c" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>(217, 14)
+       country  inflation_rate  exports_gdp_share  gdp_growth_rate  \
+0  Afghanistan             NaN          18.380042        -6.240172   
+1      Albania        6.725203          37.197085         4.826688   
+2      Algeria        9.265516          30.808979         3.600000   
+
+   gdp_per_capita  adult_literacy_rate  primary_school_enrolment_rate  \
+0      357.261153                  NaN                            NaN   
+1     6846.426143                 98.5                      96.371231   
+2     4961.552577                  NaN                     108.343933   
+
+   education_expenditure_gdp_share  measles_immunisation_rate  \
+0                              NaN                       56.0   
+1                         2.744330                       86.0   
+2                         4.749247                       79.0   
+
+   health_expenditure_gdp_share  income_inequality  unemployment_rate  \
+0                           NaN                NaN             14.100   
+1                           NaN                NaN             10.137   
+2                           NaN                NaN             12.346   
+
+   life_expectancy  total_population  
+0           62.879        40578842.0  
+1           76.833         2777689.0  
+2           77.129        45477389.0  </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/cell-2-output-2.png" width="897" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="inflation-and-life-expectancy-relationship" class="slide level2">
+<h2><strong>📈 Inflation and Life Expectancy Relationship</strong></h2>
+<p>Inflation reduces <strong>purchasing power</strong>, impacting access to <strong>healthcare, food, and services</strong>, which can lower life expectancy. Countries with <strong>hyperinflation</strong> (e.g., Venezuela) experience economic instability, worsening <strong>public health outcomes</strong>. Stable inflation, combined with <strong>strong healthcare systems</strong>, helps sustain <strong>longer life expectancy</strong>.</p>
 </section>
 <section id="visualizations" class="slide level2">
 <h2>Visualizations</h2>
-<p>plt.figure(figsize=(8, 5)) sns.scatterplot(data=df, x=“inflation_rate”, y=“life_expectancy”) plt.xlabel(“Inflation Rate (%)”) plt.ylabel(“Life Expectancy (years)”) plt.title(“Inflation vs Life Expectancy”) plt.show()</p>
+<div id="16238640" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/cell-3-output-1.png" width="659" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relationship-between-gdp-growth-inflation" class="slide level2">
+<h2><strong>📈 Relationship Between GDP Growth &amp; Inflation</strong></h2>
+<p>Inflation and GDP growth are interconnected. High inflation can stifle growth, while controlled inflation can stimulate investment.</p>
+<div id="db3a07d1" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/cell-4-output-1.png" width="668" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="slide level2">
+<h2><strong>📌 Conclusion</strong></h2>
+<p>GDP per capita trends highlight economic disparities across countries. Inflation significantly affects life expectancy, particularly in economically unstable nations. Controlled inflation supports long-term economic and social stability. Data Source: The World Bank <span class="citation" data-cites="worldbank2022">(<a href="" role="doc-biblioref" onclick="return false;"><strong>worldbank2022?</strong></a>)</span>.</p>
+<p>##<strong>Thank you!</strong> 🚀 Questions? 📊 Data Source: The World Bank (2022)</p>
 
 
 </section>
