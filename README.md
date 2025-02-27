@@ -2,7 +2,7 @@
 
 ## 📊 Report
 - [HTML Report](file:///Users/seanjeon/Desktop/QTM%20350/qtm350/assignments/05-assignment_files/quartohomework.html)
-- [PDF Report](https://github.com/yourusername/homework5/blob/main/quartohomework.pdf)
+- [PDF Report](docs/quartohomework.pdf)
 
 ## 🎤 Presentation
 - [Reveal.js Slides](https://yourusername.github.io/homework5/slides.html)
