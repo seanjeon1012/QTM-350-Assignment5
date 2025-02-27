@@ -1,10 +1,25 @@
 ---
-title: "quartohomework"
+title: "Assignment 5"
 author: "Sean Jeon"
-date: "Feburuary 25th, 2025"
+date: "2025-02-24"
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false   # Do NOT show code toggle
+    code-tools: false  # Hide code tools
+    code-overflow: wrap
+  pdf:
+    documentclass: article
+    number-sections: true
+execute:
+  echo: false  # Hides code in output
+  warning: false
+  message: false
 bibliography: references.bib
-
+csl: chicago-author-date.csl
 ---
+
 
 ## Quarto
 
