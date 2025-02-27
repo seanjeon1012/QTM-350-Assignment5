@@ -5,4 +5,4 @@
 - [PDF Report](docs/quartohomework.pdf)
 
 ## 🎤 Presentation
-- [Reveal.js Slides](https://yourusername.github.io/homework5/slides.html)
+- [Slides](https://seanjeon1012.github.io/QTM-350-Assignment5/slides.html)
