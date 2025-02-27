@@ -10,14 +10,113 @@ transition: fade
 - Key Economic and Social Metrics
 
 ## Findings
-- **GDP per Capita Trends**
-- **Inflation and Life Expectancy Relationship**
+## **📊 GDP per Capita Trends**
+GDP per capita measures the average economic output per person, reflecting **living standards and economic growth**. Developed countries tend to have **higher GDP per capita**, while emerging economies experience **rapid growth**. Economic shocks (e.g., recessions, inflation) can **slow GDP growth**, affecting **income and quality of life**.
+
+```{python}
+# Define the indicators to download
+import pandas as pd
+import wbgapi as wb
+indicators = {
+    'gdp_per_capita': 'NY.GDP.PCAP.CD',
+    'gdp_growth_rate': 'NY.GDP.MKTP.KD.ZG',
+    'inflation_rate': 'FP.CPI.TOTL.ZG',
+    'unemployment_rate': 'SL.UEM.TOTL.ZS',
+    'total_population': 'SP.POP.TOTL',
+    'life_expectancy': 'SP.DYN.LE00.IN',
+    'adult_literacy_rate': 'SE.ADT.LITR.ZS',
+    'income_inequality': 'SI.POV.GINI',
+    'health_expenditure_gdp_share': 'SH.XPD.CHEX.GD.ZS',
+    'measles_immunisation_rate': 'SH.IMM.MEAS',
+    'education_expenditure_gdp_share': 'SE.XPD.TOTL.GD.ZS',
+    'primary_school_enrolment_rate': 'SE.PRM.ENRR',
+    'exports_gdp_share': 'NE.EXP.GNFS.ZS'
+}
+
+# Get the list of country codes for the "World" region
+country_codes = wb.region.members('WLD')
+
+# Download data for countries only in 2022
+df = wb.data.DataFrame(indicators.values(), economy=country_codes, time=2022, skipBlanks=True, labels=True).reset_index()
+
+# Delete the 'economy' column
+df = df.drop(columns=['economy'], errors='ignore')
+
+# Create a reversed dictionary mapping indicator codes to names
+# Rename the columns and convert all names to lowercase
+df.rename(columns=lambda x: {v: k for k, v in indicators.items()}.get(x, x).lower(), inplace=True)
+
+# Sort 'country' in ascending order
+df = df.sort_values('country', ascending=True)
+
+# Reset the index after sorting
+df = df.reset_index(drop=True)
+
+# Display the number of rows and columns
+print(df.shape)
+
+# Display the first few rows of the data
+print(df.head(3))
+
+# Save the data to a CSV file
+df.to_csv('wdi.csv', index=False)
+#| label: fig-gdp-top10
+#| fig-cap: "Top 10 Countries by GDP Per Capita"
+
+import matplotlib.pyplot as plt
+
+top_gdp = df[['country', 'gdp_per_capita']].nlargest(10, 'gdp_per_capita')
+
+plt.figure(figsize=(10, 5))
+plt.barh(top_gdp['country'], top_gdp['gdp_per_capita'], color='skyblue')
+plt.xlabel("GDP Per Capita (USD)")
+plt.ylabel("Country")
+plt.title("Top 10 Countries by GDP Per Capita (2022)")
+plt.gca().invert_yaxis()
+plt.show()
+
+
+```
+
+## **📈 Inflation and Life Expectancy Relationship**
+Inflation reduces **purchasing power**, impacting access to **healthcare, food, and services**, which can lower life expectancy. Countries with **hyperinflation** (e.g., Venezuela) experience economic instability, worsening **public health outcomes**. Stable inflation, combined with **strong healthcare systems**, helps sustain **longer life expectancy**.
+
 
 ## Visualizations
 ```{python}
+import seaborn as sns
+
 plt.figure(figsize=(8, 5))
 sns.scatterplot(data=df, x="inflation_rate", y="life_expectancy")
 plt.xlabel("Inflation Rate (%)")
 plt.ylabel("Life Expectancy (years)")
-plt.title("Inflation vs Life Expectancy")
+plt.title("Relationship Between Inflation Rate and Life Expectancy")
 plt.show()
+
+```
+
+## **📈 Relationship Between GDP Growth & Inflation**
+Inflation and GDP growth are interconnected.
+High inflation can stifle growth, while controlled inflation can stimulate investment.
+```{python}
+plt.figure(figsize=(8,5))
+sns.scatterplot(data=df, x="gdp_growth_rate", y="inflation_rate", hue="total_population", size="total_population")
+plt.xlabel("GDP Growth Rate (%)")
+plt.ylabel("Inflation Rate (%)")
+plt.title("Relationship between GDP Growth and Inflation (2022)")
+plt.legend()
+plt.show()
+
+
+```
+
+
+## **📌 Conclusion**
+GDP per capita trends highlight economic disparities across countries.
+Inflation significantly affects life expectancy, particularly in economically unstable nations.
+Controlled inflation supports long-term economic and social stability.
+Data Source: The World Bank [@worldbank2022].
+
+##**Thank you!**
+🚀 Questions?
+📊 Data Source: The World Bank (2022)
